@@ -1,5 +1,6 @@
 package com.issam.teacher.controller;
 
+import com.issam.teacher.dto.APIResponseDto;
 import com.issam.teacher.dto.TeacherDto;
 import com.issam.teacher.service.TeacherService;
 import lombok.AllArgsConstructor;
@@ -17,10 +18,8 @@ public class TeacherController {
     private TeacherService teachersService;
 
     @GetMapping("{id}")
-    public ResponseEntity<TeacherDto> getTeacherById(@PathVariable("id")
-                                                     Long id )
-    {
-        return  new ResponseEntity<TeacherDto>(
-                teachersService.getTeacherById(id), HttpStatus.OK);
+    public ResponseEntity<APIResponseDto> getTeacherById(@PathVariable("id")
+                                                         Long id) {
+        return new ResponseEntity<APIResponseDto>(teachersService.getTeacherById(id), HttpStatus.OK);
     }
 }

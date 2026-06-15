@@ -1,5 +1,6 @@
 package com.issam.teacher.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,10 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeacherDto {
-
+public class DepartmentDto {
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String depCode;
+    private String DepName;
+    private String DepCode;
 }
