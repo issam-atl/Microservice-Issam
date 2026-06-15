@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 public class TeacherMicroserviceApplication {
@@ -20,8 +21,14 @@ public class TeacherMicroserviceApplication {
             teacherRepository.save(Teacher.builder()
                     .firstName("Issam")
                     .lastName("El Atlati")
+                    .depCode("IT")
                     .build());
 
         };
+    }
+
+    @Bean
+    public WebClient webClient() {
+        return WebClient.builder().build();
     }
 }
