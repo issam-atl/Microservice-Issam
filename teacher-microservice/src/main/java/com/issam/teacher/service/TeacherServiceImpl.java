@@ -13,24 +13,20 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class TeacherServiceImpl implements TeacherService {
     private TeacherRepository teacherRepository;
-    private WebClient webClient;
+    private APIClient apiClient;
 
     @Override
     public APIResponseDto getTeacherById(Long id) {
         Teacher teacher = teacherRepository.findById(id).get();
 
-        DepartmentDto departmentDto = webClient.get()
-                .uri("http://localhost:8080/api/departments/" +
-                        teacher.getDepCode())
-                .retrieve()
-                .bodyToMono(DepartmentDto.class)
-                .block();
 
+        DepartmentDto departmentDto = apiClient.getDepByCode(teacher.getDepCode());
         TeacherDto teacherDto = new TeacherDto(
                 teacher.getId(),
                 teacher.getFirstName(),
                 teacher.getLastName(),
-                teacher.getDepCode()
+                teacher.getDepCode(),
+                departmentDto.getDepName()
         );
 
         APIResponseDto apiResponseDto = new APIResponseDto();
