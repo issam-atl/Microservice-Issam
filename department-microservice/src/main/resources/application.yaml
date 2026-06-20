@@ -1,6 +1,12 @@
 server:
   port: 8080
 spring:
+  profiles:
+    active: "prod"
+
+  config:
+    import: "optional:configserver:http://localhost:9999/"
+
   application:
     name: department
   datasource:
@@ -14,7 +20,7 @@ spring:
       ddl-auto: update
   cloud:
     config:
-      enabled: false
+      enabled: true
     discovery:
       enabled: true
 
