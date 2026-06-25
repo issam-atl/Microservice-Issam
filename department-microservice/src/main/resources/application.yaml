@@ -5,7 +5,7 @@ spring:
     active: "prod"
 
   config:
-    import: "optional:configserver:http://localhost:9999/"
+    import: optional:configserver:${CONFIG_SERVICE_URL:http://localhost:9999}
 
   application:
     name: department
@@ -27,7 +27,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: 'http://localhost:8761/eureka/'
+      defaultZone:  ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka}
   instance:
     prefer-ip-address: true
 
@@ -36,3 +36,10 @@ management:
     web:
       exposure:
         include: '*'
+
+build:
+  version : 1.0
+
+author:
+  name: "issam el atlati"
+  email: "issam@yahoo.com"

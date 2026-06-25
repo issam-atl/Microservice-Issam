@@ -13,13 +13,23 @@ spring:
         webflux:
           discovery:
             locator:
-              enabled: true
-              lower-case-service-id: true
+              enabled: false
+          routes:
+            - id: department
+              uri: lb://DEPARTMENT
+              predicates:
+                - Path=/api/departments/**
+            - id: teacher
+              uri: lb://TEACHER
+              predicates:
+                - Path=/api/teachers/**
 
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      defaultZone: 'http://localhost:8761/eureka/'
+      defaultZone:  ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka}
   instance:
     prefer-ip-address: true
 
