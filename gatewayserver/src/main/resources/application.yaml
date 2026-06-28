@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: gatewayserver
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
   cloud:
     config:
       enabled: false
